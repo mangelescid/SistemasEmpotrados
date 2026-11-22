@@ -72,4 +72,14 @@ Para de esta forma restaurar el timer1 a analogWrite, básicamente ponerlo a la 
 ##### IMAGENES DEL MONTAJE DEL ARDUINO
 
 
+<img width="3000" height="2160" alt="20261122_134039(1)" src="https://github.com/user-attachments/assets/bc6ca410-1450-491b-93d6-0e942dedc8e7" />
+
+En esta primera imagen podemos ver el LCD y el joystick y el pulsador, el cual esta entre el LCD y el sensor de temperatura y de humedad.
+
+
+<img width="3000" height="2042" alt="20261122_133945(1)" src="https://github.com/user-attachments/assets/77646ca0-c6e6-47bc-82d9-cb7e5ba4c15f" />
+
+Y en esta segunda imagen podemos ver el sensor de temperatura y humedad, el sensor de distancia por ultrasonidos y los dos LEDS, rojo y amarillo.
+
+
 ##### VIDEO DEL FUNCIONAMIENTO
