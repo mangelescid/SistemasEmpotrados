@@ -1,46 +1,50 @@
 # SistemasEmpotrados
 
-### Conexiones de pines para el montaje
+
+### PRÁCTICA3: MAQUINA EXPENDEDORA
+##### OBJETIVOS
 <p>
-  LedAzul-> pin 9
-
-  
-  LedRojo -> pin 10
-
-  
-  SensorDeTemperatura -> pin 13
-
-  
-  Pulsador -> pin2
-
-  
-  SensorDeDistancia:
-
-  
-    Primer pin cerca de GND -> pin 7
-
-    
-    Segundo pin cerca de Vcc -> pin 8
-
-    
-  Pines Joystick:
-
-  
-    Despues de 5V para la derecha
-
-    
-    A5
-
-    
-    A4
-
-    
-    A3
-
-    
-  LCD
-
-  
-  Tierra, Positivo, Tierra, 12, Tierra, 11, 4Saltos, 5,4,3,6,resistencia pull-up, positivo, tierra
-  
+En esta práctica teníamos que crear nuestra propia máquina registradora, la cual tenía que cumplir con una serie de funciones y algunas de las funciones que hemos dado este año: threads, Watchdog, timerone...  
 </p>
+
+##### EXPLICACIÓN DE MI ALGORITMO
+<p>
+Mi máquina expendedora funciona básicamente con una máquina de estados y cada uno de estos, es una función de la máquina. Los estados que tienen son MODO_SERVICIO, MONITOR_Y_CATALOGO, NAVEGACION_Y_SELECCION, BEBIDA_SELECCIONADA, PREPARADO, ADMIN, TEMPERATURA, DISTANCIA, CONTADOR, MOD_PRECIOS, SUMAR_Y_RESTAR.
+
+
+Primero el programa empieza en la pantalla cargando, que no forma parte de ninguno de estos estados y el cual se regula con un contador, para realizar el parpadeo del LED1 y que en el LCD salga CARGANDO..., una vez que el contador llega a tres; para que parpadee tres veces por segundo, limpiamos el LCD y el LED1 se queda apagado y pasamos a la máquina de estados.
+
+*¿Para qué es cada estado?*
+
+- MODO_SERVICIO: En este estado lo que hacemos es identificar con el sensor de ultrasonidos si tenemos a algún cliente a un metro de distancia o menos, para pasar así al siguiente estado, sino nos mantenemos en este hasta que llegue uno. En la máquina de estados como tal el case está vacío porque he hecho que funcione con un thread, así que el thread cuenta con la función.
+
+- MONITOR_Y_CATALOGO: Este tambíen su case está vacío, ya que como el anterior es un thread y lo que hace es mostrar la temperatura y la humedad durante un tiempo y pasa a NAVEGACION_Y_SELECCION.
+
+- NAVEGACION_Y_SELECCION: En esta función lo que hacemos es básicamente escoger el producto que queremos tomar, entonces tenemos en el monitor LCD los distintos productos acompañado de sus precios, y con el Joystick, vamos moviendo para arriba y para abajo para poder seleccionar luego pulsando este mismo qué producto queremos para entrar en el estado de BEBIDA_SELECCIONADA.
+
+- BEBIDA_SELECCIONADA: Una vez que tenemos la bebida, comenzamos con su preparación, la cual tiene un tiempo aleatorio de entre 4-8 segundos, durante el tiempo que sea sale en la pantalla LCD  PREPARANDO CAFE... y a su vez el LED2, va aumentando su intensidad conforme va avanzando el tiempo de preparación y ya después de este pasamos al último estado del cliente.
+
+- PREPARADO: El cual nos indica que podemos retirar nuestra bebida y retorna al MODO-SERVICIO esperando a que aparezca un nuevo cliente.
+
+ Todos estos que he descrito anteriormente forman parte del modo-cliente, pero luego hay otro modo usuario, el cual se puede activar en cualquier momento, 
+ manteniendo pulsado el botón durante unos cinco segundos, cuando llegamos o superamos los cinco segundos se activan los dos LEDS a la vez y entramos en el modo administrador el cual contiene estos estados:
+
+ - ADMIN: En este estado, ya estamos dentro del modo admin y lo que tenemos es una pantalla de menú completamente distinta a la anterior, la cual muestra las distintas funciones que tiene el administrador y que explicaré después con más detalle, para ver el menú nos movemos con el Joystick y seleccionamos la función pulsando este también, luego en cada uno de los estados tengo una funcion, salir(), que sirve para poder volver a este menú y consiste en que si movemos el joystick para la izquierda nos retorne a este estado.
+
+ - TEMPERATURA: Esta función lo que hace es mostrarnos la temperatura y la humedad que hay en el ambiente en tiempo real, para ello lo que utilizo es el thread de MONITOR_Y_CATALOGO.
+
+ - DISTANCIA: Lo que hace es mostrarnos la distancia que hay de nosotros al sensor en tiempo real, sin que nos expulse al superar el rango de la distancia a no ser que el administrador se lo pida.
+
+ - CONTADOR: El contador lo que nos muestra es el tiempo que lleva el arduino encendido, lo que lleva el programa activo.
+
+ - MOD_PRECIOS: es una función la cual nos permite cambiar los precios, entonces aquí hacemos el mismo movimiento que en NAVEGACION_Y_SELECCION y una vez que escogemos el producto pasamos a la segunda parte de este estado, ya que a este lo acompaña otro estado.
+
+ - SUMAR_Y_RESTAR: Una vez que escogemos el producto, el LCD nos muestra el precio y luego nosotros subimos o bien bajamos el precio 0.05 cent, si no queremos aplicar el cambio lo que hacemos es mover el Joystick a la izquierda y sino lo confirmamos pulsando este, guardando así el cambio y volviendo otra vez a MOD_PRECIOS.
+
+Si en algún momento quisiéramos salir del modo admin, en cada uno de estos estados, incluido el ADMIN llamamos a una función la cual hace lo mismo que el thread de admin pero con la función opuesta y es que si nos encontramos en alguno de estos estados y mantenemos el botón pulsado otra vez cinco segundos entonces salimos del modo administrador y por lo tanto también se apagan los dos LEDS. 
+</p>
+
+*Esquemático de la transición de los distintos estados*
+
+<img width="1055" height="1045" alt="Screenshot from 2026-11-22 11-07-32" src="https://github.com/user-attachments/assets/08557982-8871-4379-9b69-a689180258dc" />
+
