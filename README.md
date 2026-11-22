@@ -57,11 +57,14 @@ Threads -> Los threads lo que hace es que nos ayudan a que podamos ejecutar algu
 TimerOne -> es una función la cual nos ayuda a utilizar un temporizador que viene incorporado en el arduino, entonces yo lo he utilizado para la función contador, tengo una función que es empezarContador(), y otra que es pararContador(), en empezarContador lo que hago es que lo inicializo en 1 segundo al igual que la variable segundo que la inicializo con micro(), para tener ambas como punto de partida, luego hacemos una interrupción para incrementar el valor de segundo y en pararContador quitamos la interrupción y en mi caso como el pin influye sobre el LED2, entonces cuando trabajo para timer1 tiene que hacer una cosa y cuando uso el LED otra y que no se pisen aplicó estas líneas:
 
 
+```
 TCCR1A = _BV(WGM10);
 TCCR1B = _BV(CS11) | _BV(CS10);
-
+```
 WGM10-> nos dice cómo tiene que contar el timer
+
 CS11/CS10->elije la velocidad del timer
+
 _BV()-> encender un interruptor, y al ponerle la | lo que hacemos es que encendemos varios a la vez
 Para de esta forma restaurar el timer1 a analogWrite, básicamente ponerlo a la velocidad normal del Arduino
 </p>
