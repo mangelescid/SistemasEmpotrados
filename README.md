@@ -88,13 +88,10 @@ Y en esta segunda imagen podemos ver el sensor de temperatura y humedad, el sens
 
 *FUNCIONAMIENTO EN LOS ESTADOS DEL CÓDGIO CLIENTE*
 
-https://github.com/user-attachments/assets/c40dbe7e-c2c4-4634-a83b-c05751278cf0
 
 
+https://github.com/user-attachments/assets/e7788718-ef20-4164-b68d-340e02d808c2
 
-
-
-https://github.com/user-attachments/assets/7ed5b24f-37a1-4ac4-8333-530de78e12dc
 
 
 
@@ -110,7 +107,7 @@ https://github.com/user-attachments/assets/1da59800-633f-46f6-bd58-7e637cadc972
 https://github.com/user-attachments/assets/5df9c7b9-79fe-4f7a-95d8-97673d87cf5e
 
 
-Nota sobre los videos: Al comenzar a grabar creo que no grabe los tres parpadeos del cargando, y solo grabe dos, pero en verdad realiza los tres parpadeos y luego he tenido que recortar los videos, ya que en uno solo ambos videos pesaban demasiado, pero los videos estan puestos en el orden correspondiente.
+Nota sobre los videos: He tenido que recortar el video del administrador, ya que pesaba demasiado para poder subirlo, pero los videos estan puestos en el orden correspondiente.
 
 ##### ESQUEMATICO DEL ARDUINO
 
