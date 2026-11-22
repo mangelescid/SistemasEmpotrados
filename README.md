@@ -41,10 +41,32 @@ Primero el programa empieza en la pantalla cargando, que no forma parte de ningu
 
  - SUMAR_Y_RESTAR: Una vez que escogemos el producto, el LCD nos muestra el precio y luego nosotros subimos o bien bajamos el precio 0.05 cent, si no queremos aplicar el cambio lo que hacemos es mover el Joystick a la izquierda y sino lo confirmamos pulsando este, guardando así el cambio y volviendo otra vez a MOD_PRECIOS.
 
-Si en algún momento quisiéramos salir del modo admin, en cada uno de estos estados, incluido el ADMIN llamamos a una función la cual hace lo mismo que el thread de admin pero con la función opuesta y es que si nos encontramos en alguno de estos estados y mantenemos el botón pulsado otra vez cinco segundos entonces salimos del modo administrador y por lo tanto también se apagan los dos LEDS. 
+Si en algún momento quisiéramos salir del modo admin, en cada uno de estos estados, incluido el ADMIN llamamos a una función la cual hace lo mismo que el thread de admin pero con la función opuesta y es que si nos encontramos en alguno de estos estados y mantenemos el botón pulsado otra vez cinco segundos entonces salimos del modo administrador y por lo tanto también se apagan los dos LEDS.
 </p>
 
 *Esquemático de la transición de los distintos estados*
 
 <img width="1055" height="1045" alt="Screenshot from 2026-11-22 11-07-32" src="https://github.com/user-attachments/assets/08557982-8871-4379-9b69-a689180258dc" />
 
+##### FUNCIONES NUEVAS USADAS Y PORQUE
+<p>
+Para este programa, algunas de las funciones nuevas que he utilizado son:
+
+Threads -> Los threads lo que hace es que nos ayudan a que podamos ejecutar algunas funciones en paralelo, mientras va corriendo el programa, entonces yo por ejemplo los he utilizado para la función del sensor de distancia, para que vaya midiendo cada cierto tiempo la distancia que tiene el cliente con el sensor y así, si el cliente se va en algún punto, reiniciar la máquina a modo servicio, también lo he utilizado para la función de temperatura para que vaya midiendo esta de forma constante y por último para el administrador, ya que podemos entrar en este modo en cualquier momento de la ejecución, entonces lo que hace es que va comprobando si se está pulsando o no el botón para entrar en el estado.
+
+TimerOne -> es una función la cual nos ayuda a utilizar un temporizador que viene incorporado en el arduino, entonces yo lo he utilizado para la función contador, tengo una función que es empezarContador(), y otra que es pararContador(), en empezarContador lo que hago es que lo inicializo en 1 segundo al igual que la variable segundo que la inicializo con micro(), para tener ambas como punto de partida, luego hacemos una interrupción para incrementar el valor de segundo y en pararContador quitamos la interrupción y en mi caso como el pin influye sobre el LED2, entonces cuando trabajo para timer1 tiene que hacer una cosa y cuando uso el LED otra y que no se pisen aplicó estas líneas:
+
+
+TCCR1A = _BV(WGM10);
+TCCR1B = _BV(CS11) | _BV(CS10);
+
+WGM10-> nos dice cómo tiene que contar el timer
+CS11/CS10->elije la velocidad del timer
+_BV()-> encender un interruptor, y al ponerle la | lo que hacemos es que encendemos varios a la vez
+Para de esta forma restaurar el timer1 a analogWrite, básicamente ponerlo a la velocidad normal del Arduino
+</p>
+
+##### IMAGENES DEL MONTAJE DEL ARDUINO
+
+
+##### VIDEO DEL FUNCIONAMIENTO
