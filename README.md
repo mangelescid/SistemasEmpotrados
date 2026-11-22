@@ -1,7 +1,7 @@
 # SistemasEmpotrados
 
 
-### PRÁCTICA3: MAQUINA EXPENDEDORA
+### PRÁCTICA 3: MAQUINA EXPENDEDORA
 ##### OBJETIVOS
 <p>
 En esta práctica teníamos que crear nuestra propia máquina registradora, la cual tenía que cumplir con una serie de funciones y algunas de las funciones que hemos dado este año: threads, Watchdog, timerone...  
@@ -83,3 +83,13 @@ Y en esta segunda imagen podemos ver el sensor de temperatura y humedad, el sens
 
 
 ##### VIDEO DEL FUNCIONAMIENTO
+
+
+##### PROBLEMAS QUE HE TENIDO CON LA PRACTICA
+<p>
+Los principales problemas que me he encontrado en esta práctica han sido, principalmente situar los ejes del joystick, ya que tienen una orientación distinta a la que pensaba ya que el eje y, sería el pin x y el eje x, el pin y, por lo que esto me retrasó mucho a la hora de avanzar.
+
+ Otro problema que he tenido ha sido que por lo visto la función timerOne necesita trabajar con los pines 9 y 10, que son pines que he tenido que usar del arduino, entonces me ha costado mucho el encontrar la forma de poder usarlo tanto para el led como para el contador.
+
+ Y por último que me hubiese gustado que fuese más visible el hardware, es decir, en mi opinión el material veo que está demasiado ajustado, sobre todo el cableado, entonces por ejemplo a veces que tengo que mover el Joystick, tocó un cable que forma parte del LCD sin querer y se pierde la visión del mensaje, por lo que tengo que reiniciar el programa para que se pueda ver bien de nuevo.
+</p>
