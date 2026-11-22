@@ -54,6 +54,8 @@ Para este programa, algunas de las funciones nuevas que he utilizado son:
 
 Threads -> Los threads lo que hace es que nos ayudan a que podamos ejecutar algunas funciones en paralelo, mientras va corriendo el programa, entonces yo por ejemplo los he utilizado para la función del sensor de distancia, para que vaya midiendo cada cierto tiempo la distancia que tiene el cliente con el sensor y así, si el cliente se va en algún punto, reiniciar la máquina a modo servicio, también lo he utilizado para la función de temperatura para que vaya midiendo esta de forma constante y por último para el administrador, ya que podemos entrar en este modo en cualquier momento de la ejecución, entonces lo que hace es que va comprobando si se está pulsando o no el botón para entrar en el estado.
 
+Watchdog-> Esta funcion la uso basicamente para depurar, es decir, por si el programa tiene algun tipo de error o de falla con algun bucle en el que se quede pillado, como por ejemplo puede pasar con funciones como pulseIn(), pues que si supera un periodo de tiempo lo expulse
+
 TimerOne -> es una función la cual nos ayuda a utilizar un temporizador que viene incorporado en el arduino, entonces yo lo he utilizado para la función contador, tengo una función que es empezarContador(), y otra que es pararContador(), en empezarContador lo que hago es que lo inicializo en 1 segundo al igual que la variable segundo que la inicializo con micro(), para tener ambas como punto de partida, luego hacemos una interrupción para incrementar el valor de segundo y en pararContador quitamos la interrupción y en mi caso como el pin influye sobre el LED2, entonces cuando trabajo para timer1 tiene que hacer una cosa y cuando uso el LED otra y que no se pisen aplicó estas líneas:
 
 
@@ -83,6 +85,48 @@ Y en esta segunda imagen podemos ver el sensor de temperatura y humedad, el sens
 
 
 ##### VIDEO DEL FUNCIONAMIENTO
+
+*FUNCIONAMIENTO EN LOS ESTADOS DEL CÓDGIO CLIENTE*
+
+https://github.com/user-attachments/assets/c40dbe7e-c2c4-4634-a83b-c05751278cf0
+
+
+
+
+
+https://github.com/user-attachments/assets/7ed5b24f-37a1-4ac4-8333-530de78e12dc
+
+
+
+*FUNCIONAMIENTO EN LOS ESTAODS DEL CÓDIGO ADMIN*
+
+
+https://github.com/user-attachments/assets/70431547-a046-4fb7-8567-b0180c23c253
+
+
+https://github.com/user-attachments/assets/1da59800-633f-46f6-bd58-7e637cadc972
+
+
+https://github.com/user-attachments/assets/5df9c7b9-79fe-4f7a-95d8-97673d87cf5e
+
+
+Nota sobre los videos: Al comenzar a grabar creo que no grabe los tres parpadeos del cargando, y solo grabe dos, pero en verdad realiza los tres parpadeos y luego he tenido que recortar los videos, ya que en uno solo ambos videos pesaban demasiado, pero los videos estan puestos en el orden correspondiente.
+
+##### ESQUEMATICO DEL ARDUINO
+
+
+<img width="1997" height="1064" alt="Screenshot from 2026-11-22 18-42-21" src="https://github.com/user-attachments/assets/492f6fb2-2123-460e-b7e0-d3a21ca67341" />
+
+
+*Descripción de algunos pines:*
+- Cables rojos +, Cables negros -
+- LCD: (3,4,5,6,11,12). Cables cian.
+- Joystick: Vertical-> A2, Horizontal-> A1, Z-> A0. Cables marrones.
+- Sensor de temperatura y humedad: 13. Cable gris.
+- Sensor de ultrasonidos: Tring-> 7, Echo -> 8. Cables Amarillos.
+- Pulsador: 2. Cable naranja.
+- LED1: 9. Cable verde. 
+- LED2: 10. Cable verde.
 
 
 ##### PROBLEMAS QUE HE TENIDO CON LA PRACTICA
