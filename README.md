@@ -55,9 +55,10 @@ Para este programa, algunas de las funciones nuevas que he utilizado son:
 
 Threads -> Los threads lo que hace es que nos ayudan a que podamos ejecutar algunas funciones en paralelo, mientras va corriendo el programa, entonces yo por ejemplo los he utilizado para la función del sensor de distancia, para que vaya midiendo cada cierto tiempo la distancia que tiene el cliente con el sensor y así, si el cliente se va en algún punto, reiniciar la máquina a modo servicio, también lo he utilizado para la función de temperatura para que vaya midiendo esta de forma constante y por último para el administrador, ya que podemos entrar en este modo en cualquier momento de la ejecución, entonces lo que hace es que va comprobando si se está pulsando o no el botón para entrar en el estado.
 
-Watchdog-> Esta funcion la uso basicamente para depurar, es decir, por si el programa tiene algun tipo de error o de falla con algun bucle en el que se quede pillado, como por ejemplo puede pasar con funciones como pulseIn(), pues que si supera un periodo de tiempo lo expulse
+Watchdog-> Esta función la uso básicamente para depurar, es decir, por si el programa tiene algún tipo de error o de falla con algún bucle en el que se quede pillado, como por ejemplo puede pasar con funciones como pulseIn(), pues que si supera un periodo de tiempo lo expulse
 
 TimerOne -> es una función la cual nos ayuda a utilizar un temporizador que viene incorporado en el arduino, entonces yo lo he utilizado para la función contador, tengo una función que es empezarContador(), y otra que es pararContador(), en empezarContador lo que hago es que lo inicializo en 1 segundo al igual que la variable segundo que la inicializo con micro(), para tener ambas como punto de partida, luego hacemos una interrupción para incrementar el valor de segundo y en pararContador quitamos la interrupción y en mi caso como el pin influye sobre el LED2, entonces cuando trabajo para timer1 tiene que hacer una cosa y cuando uso el LED otra y que no se pisen aplicó estas líneas:
+
 
 
 ```
