@@ -46,7 +46,8 @@ Si en algún momento quisiéramos salir del modo admin, en cada uno de estos est
 
 *Esquemático de la transición de los distintos estados*
 
-<img width="1055" height="1045" alt="Screenshot from 2026-11-22 11-07-32" src="https://github.com/user-attachments/assets/08557982-8871-4379-9b69-a689180258dc" />
+<img width="969" height="993" alt="Screenshot from 2026-11-23 15-03-18" src="https://github.com/user-attachments/assets/ac8581ed-7acb-4031-b975-c7d4fc341282" />
+
 
 ##### FUNCIONES NUEVAS USADAS Y PORQUE
 <p>
