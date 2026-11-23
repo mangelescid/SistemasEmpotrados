@@ -97,7 +97,7 @@ https://github.com/user-attachments/assets/e7788718-ef20-4164-b68d-340e02d808c2
 
 
 
-*FUNCIONAMIENTO EN LOS ESTAODS DEL CÓDIGO ADMIN*
+*FUNCIONAMIENTO EN LOS ESTADOS DEL CÓDIGO ADMIN*
 
 
 https://github.com/user-attachments/assets/70431547-a046-4fb7-8567-b0180c23c253
